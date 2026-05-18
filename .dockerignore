@@ -1,0 +1,26 @@
+# Version Control
+.git
+.gitignore
+.github
+
+# Python cache and testing debris
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local settings and environments
+.venv/
+venv/
+.env.dev
+.env.test
+.env.staging
+.env.prod
+
+# Unnecessary build context paths
+docs/
+backend/infrastructure/kubernetes/
+backend/infrastructure/terraform/
