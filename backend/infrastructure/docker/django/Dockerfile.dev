@@ -1,0 +1,23 @@
+# Build from our localized base blueprint
+FROM base as development
+
+# Set current working context
+WORKDIR /app
+
+# Copy requirement files relative to the build context
+COPY requirements/base.txt requirements/dev.txt ./requirements/
+
+# Install the targeted development requirements
+RUN pip install --no-cache-dir -r requirements/dev.txt
+
+# Enforce secure ownership permissions
+RUN chown -R django:django /app
+
+# Drop root privileges to use our secure system user
+USER django
+
+# Expose standard port for Django development process
+EXPOSE 8000
+
+# Default execution fallback
+CMD ["python", "src/manage.py", "runserver", "0.0.0.0:8000"]
